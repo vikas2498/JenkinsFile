@@ -5,7 +5,7 @@ pipeline{
     }
     environment {
         APP_NAME = "My-Web-APP"
-        APP-VERSION = "V1.0"
+        APP_VERSION = "V1.0"
     }
     stages{
         stage('Git Checkout'){
