@@ -1,6 +1,7 @@
 pipeline{
+    agnet any
     parameters{
-        choices(name: 'action', choices: 'create\delete', description: 'Choose create/Destroy')
+        choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
     }
     environment {
         APP_NAME = "My-Web-APP"
@@ -9,7 +10,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
-                //git branch: 'main', credentialsId: 'git-credentials', url: 'https://github.com/vikas2498/JenkinsFile.git'
+                git branch: 'main', url: 'https://github.com/vikas2498/JenkinsFile.git'
                 echo "Git Checkout satge 1"
             }
         }
