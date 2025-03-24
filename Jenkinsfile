@@ -38,7 +38,7 @@ pipeline {
             }
             when {expression {params.action == 'Create'}}
             steps{
-                echo 'running static code analysis using sonarqube stage 2 ${env.Local_ENV_Variable}'
+                echo "running static code analysis using sonarqube stage 2 ${env.Local_ENV_Variable}"
             }
 
         }
