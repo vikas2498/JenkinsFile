@@ -24,8 +24,8 @@ pipeline {
                 script{
                     checkout([
                         $class: 'GitSCM',
-                        branches:[(name:"*/${env.Git_Branch}")],
-                        userRemoteConfigs: [(url: "${env.Global_Git_URL}")]
+                        branches:[[name:"*/${env.Git_Branch}"]],
+                        userRemoteConfigs: [[url: "${env.Global_Git_URL}"]]
                     ])
                     echo "checking out from ${env.Global_Git_URL} branch ${env.Git_Branch}"
                 }
