@@ -42,5 +42,13 @@ pipeline {
             }
 
         }
+        stage('docker build'){
+            when {expression {params.actioin == 'Create'}}
+            steps{
+ 
+                dockerImage = params.ImageName+":"+params.ImageTag
+                echo "Docker image built in stage 3 is ${env.dockerImage}"
+            }
+        }
     }
 }
