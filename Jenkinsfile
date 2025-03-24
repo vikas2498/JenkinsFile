@@ -38,7 +38,7 @@ pipeline {
             }
             when {expression {params.action == 'Create'}}
             steps{
-                echo "running static code analysis using sonarqube stage 2 ${env.Local_ENV_Variable}"
+                echo "running static code analysis using sonarqube stage 2 ${Local_ENV_Variable}"
             }
 
         }
@@ -46,7 +46,7 @@ pipeline {
             when {expression {params.action == 'Create'}}
             steps{
                 script{
-                   env.dockerImage = "${params.ImageName}:${params.ImageTag}"
+                   dockerImage = "${params.ImageName}:${params.ImageTag}"
                    echo "Docker image built in stage 3 is ${env.dockerImage}"
                 }
  
