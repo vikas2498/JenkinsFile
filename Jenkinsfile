@@ -1,6 +1,7 @@
 //1. Global env variable
 //2. Environment Variables in Specific Stages
 //3. Passing Environment Variables from One Stage to Another
+//4 run parallel stagess
 pipeline {
     agent any
     // agent {lable 'Demo'}
@@ -58,6 +59,23 @@ pipeline {
         stage ('Push to registry'){
             steps{
                 echo "docker image ${env.DOCKER_IMAGE} will be pushed to registry ${env.registry}"
+            }
+        }
+        stage('Deploy'){
+            when{
+                expression {params.action == 'Create'}
+            }
+            parallel{
+                stage('Deploy in Stage Env'){
+                    steps{
+                        echo "deploying ${env.DOCKER_IMAGE} to stage environment"
+                    }
+                }
+                stage('Deploy in Prod Env'){
+                    steps{
+                        echo "deploying ${env.DOCKER_IMAGE} to prod environment"
+                    }
+                } 
             }
         }
     }
