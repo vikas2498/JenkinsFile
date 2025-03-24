@@ -49,6 +49,7 @@ pipeline {
                    def dockerImage = "${params.ImageName}:${params.ImageTag}"
 
                    echo "Docker image built in stage 3 is ${dockerImage}"
+                   env.DOCKER_IMAGE = dockerImage
                 }
  
               
@@ -56,7 +57,7 @@ pipeline {
         }
         stage ('Push to registry'){
             steps{
-                echo "docker image ${env.dockerImage} will be pushed to registry ${env.registry}"
+                echo "docker image ${env.DOCKER_IMAGE} will be pushed to registry ${env.registry}"
             }
         }
     }
