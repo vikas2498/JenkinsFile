@@ -54,5 +54,10 @@ pipeline {
               
             }
         }
+        stage ('Push to registry'){
+            steps{
+                echo "docker image ${env.dockerImage} will be pushed to registry ${env.registry}"
+            }
+        }
     }
 }
