@@ -19,7 +19,7 @@ pipeline {
     }
     stages{
         stage('Git Checkout'){
-            when {expression {params.action == 'create'}}
+            when {expression {params.action == 'Create'}}
             steps{
                 script{
                     checkout([
@@ -36,7 +36,7 @@ pipeline {
             environment{
                 Local_ENV_Variable = "local env variable cannot be used outside of the stage"
             }
-            when {expression {params.action == 'create'}}
+            when {expression {params.action == 'Create'}}
             steps{
                 echo 'running static code analysis using sonarqube stage 2 ${env.Local_ENV_Variable}'
             }
