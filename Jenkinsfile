@@ -46,8 +46,9 @@ pipeline {
             when {expression {params.action == 'Create'}}
             steps{
                 script{
-                   env.dockerImage = "${params.ImageName}:${params.ImageTag}"
-                   echo "Docker image built in stage 3 is ${env.dockerImage}"
+                   def dockerImage = "${params.ImageName}:${params.ImageTag}"
+
+                   echo "Docker image built in stage 3 is ${dockerImage}"
                 }
  
               
